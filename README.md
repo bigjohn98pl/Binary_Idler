@@ -1,2 +1,2 @@
 # Binary_Idler
-This is my project of idle game 
+Idle game project
