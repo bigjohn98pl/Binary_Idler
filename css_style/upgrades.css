@@ -1,0 +1,32 @@
+#upgrades
+{
+	display: block;
+	width: inherit;
+	height: 50px;
+	background-color: #3a3c3a;
+	border-bottom: inset #20e31a;
+	transition: height 200ms;
+	overflow-y: hidden;
+	text-align: center;
+	font-size: 20px;
+}
+#upgrades:hover
+{
+	height: 300px;
+}
+.upgrades_list
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	margin: 12px 0px 0px 12px;
+	background-color:gray;
+	border: 3px solid #20e31a;
+	border-radius: 4px;
+}
+p
+{
+	cursor: default;
+}

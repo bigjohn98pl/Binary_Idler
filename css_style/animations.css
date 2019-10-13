@@ -1,0 +1,20 @@
+@keyframes glow
+{
+	from {color: #00FF11}
+	to {color: #3a803b}
+}
+@keyframes logo
+{
+	from {color: white}
+	to {color: #999999}
+}
+@keyframes click
+{
+	0%		{opacity: 1; }
+	100%	{opacity: 0;  top: 200px;}
+}
+@pressenter
+{
+	from {color: white}
+	to {color: #999999}
+}

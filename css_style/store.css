@@ -1,0 +1,49 @@
+#store
+{
+	display: block;
+	width: inherit;
+	height: 50px;
+	background-color: #3a3c3a;
+	border-bottom: inset #20e31a;
+	transition: height 200ms;
+	overflow-y: auto;
+	text-align: center;
+	font-size: 20px;
+}
+#store:hover
+{
+	height: 500px;
+}
+.item_list
+{
+	position: relative;
+	width: auto;
+	height: 30px;
+	font-size: 10px;
+	border: 3px solid #20e31a;
+	background-color: gray;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.img_store
+{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.number_store
+{
+	position: absolute;
+	left: 85px;
+	top: 5px;
+	font-size: 20px;
+}
+.price_store
+{
+	position: absolute;
+	right: 0px;
+	bottom: 1px;
+}
