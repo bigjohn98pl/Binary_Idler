@@ -38,21 +38,21 @@ window.onload = function () {
 
 		function naliczaj()
 		{
+			//wartosci x i y w momecie klikniecia
 			var x = event.clientX;
 			var y = event.clientY;
 			
-			var text = Math.floor(Math.random() * 2);
-			var number = document.createElement("div")
-			var one = document.createTextNode("+"+text);
-			number.setAttribute("id","anime")
-			document.body.appendChild(number);
-			number.appendChild(one);
+			var text = Math.floor(Math.random() * 2); 					//llossowa liczba z zakresu 0-1
+			var one = document.createTextNode("+"+text); 			//dodanie znaku "+" do zmiennej text
 			
-			var zeros_0 = document.getElementById("counter_zeros").innerHTML
-			var ones_1 =document.getElementById("counter_ones").innerHTML
+			var number = document.createElement("div") 			//tworzenie elementu html
+			number.setAttribute("id","anime") 								//ustawienie id elementu dla zmiany wygladu elementu html
+			document.body.appendChild(number); 						//dołączenie elementu number do elementu body 
+			number.appendChild(one); 										//wstawienie elementu one do number
+			
 
-			number.style.left = x -30 + Math.floor(Math.random() * 30)-15 + 'px';
-			number.style.top = y -20 + Math.floor(Math.random() * 30)-15 + 'px';
+			number.style.left = x //-30 + Math.floor(Math.random() * 30)-15 + 'px';
+			number.style.top = y //-20 + Math.floor(Math.random() * 30)-15 + 'px';
 			setTimeout(del, 750)
 			
 			if (text == "0")
