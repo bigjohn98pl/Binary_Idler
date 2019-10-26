@@ -1,27 +1,26 @@
-var click = localStorage.getItem("save_click");
-var zeros = localStorage.getItem("save_zeros");
-var ones = localStorage.getItem("save_ones");
+var BIN_COIN = localStorage.getItem("save_BIN_COIN");
+var CLICKING = localStorage.getItem("save_CLICKING");
+var ZEROS = localStorage.getItem("save_ZEROS");
+var ONES = localStorage.getItem("save_ONES");
 window.onload = function () {
-	
-	click = localStorage.getItem("save_click");
+
 	document.getElementById("number0").innerHTML = localStorage.getItem("save_number0");
 	document.getElementById("price0").innerHTML = localStorage.getItem("save_price0");
-	if(click == null)
+	if(BIN_COIN == null)
 	{
 		alert("Save file error");
-		click = 0;
+		BIN_COIN = 0;
 		alert("Save file error2");
 		document.getElementById("number0").innerHTML = 0;
 		alert("Save file error3");
 		document.getElementById("price0").innerHTML = 10;
-		zeros = 0;
-		ones = 0;
-		document.getElementById("counter_ones").innerHTML =0;
-		document.getElementById("counter_zeros").innerHTML = 0;
+		ZEROS = 0;
+		ONES = 0;
+		CLICKING = 0;
+		document.getElementsByClassName("counter")[3].innerHTML =0;
+		document.getElementsByClassName("counter")[4].innerHTML =0;
+		document.getElementsByClassName("counter")[5].innerHTML =0;
 	}
-	
-	document.getElementById("click_catcher").addEventListener("click", naliczaj);
-	document.getElementById("click_catcher").addEventListener("contextmenu", naliczaj);
 
 	document.getElementById("click_catcher").addEventListener("mouseup", buttonup);
 	document.getElementById("click_catcher").addEventListener("mousedown", buttonpress);
@@ -31,83 +30,100 @@ window.onload = function () {
 
 	document.getElementById("pressenter").addEventListener("keydown", buttonpress);
 	document.getElementById("pressenter").addEventListener("keyup", buttonup);
-	document.getElementById("pressenter").addEventListener("input", naliczaj);
+	var input = document.getElementById("pressenter");
+    input.addEventListener("keyup", function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("sub").click();
+      }
+    });
 
 	//document.getElementById("item0").addEventListener("click", item());
 }
-
-		function naliczaj()
+		function naliczaj(k)
 		{
-			//wartosci x i y w momecie klikniecia
-			var x = event.clientX;
-			var y = event.clientY;
-			
-			var text = Math.floor(Math.random() * 2); 					//llossowa liczba z zakresu 0-1
-			var one = document.createTextNode("+"+text); 			//dodanie znaku "+" do zmiennej text
-			
-			var number = document.createElement("div") 			//tworzenie elementu html
-			number.setAttribute("id","anime") 								//ustawienie id elementu dla zmiany wygladu elementu html
-			document.body.appendChild(number); 						//dołączenie elementu number do elementu body 
-			number.appendChild(one); 										//wstawienie elementu one do number
-			
-
-			number.style.left = x //-30 + Math.floor(Math.random() * 30)-15 + 'px';
-			number.style.top = y //-20 + Math.floor(Math.random() * 30)-15 + 'px';
-			setTimeout(del, 750)
-			
+			text = number_appear(k);
+            CLICKING++;
 			if (text == "0")
 			{
-				zeros++;
+				ZEROS++;
 			}
 			else if (text =="1")
 			{
-				ones++;
+				ONES++;
 			}
-		
 		}
+		function naliczaj1()
+        		{
+        			//wartosci x i y w momecie klikniecia
+        			var x = 370;
+                    var y = 470;
+
+        			var text = Math.floor(Math.random() * 2); 					//llossowa liczba z zakresu 0-1
+        			var one = document.createTextNode("+"+text); 			//dodanie znaku "+" do zmiennej text
+
+        			var number = document.createElement("div") 			//tworzenie elementu html
+        			number.setAttribute("class","anime") 								//ustawienie id elementu dla zmiany wygladu elementu html
+        			document.body.appendChild(number); 						//dołączenie elementu number do elementu body
+        			number.appendChild(one); 										//wstawienie elementu one do number
+
+
+        			number.style.left = x - 40  + 'px';
+        			number.style.top = y  + 'px';
+        			setTimeout(del, 750)
+
+        			if (text == "0")
+        			{
+        				ZEROS++;
+        			}
+        			else if (text =="1")
+        			{
+        				ONES++;
+        			}
+
+        		}
 		
 		function convert()
 		{
-			var BC = document.getElementById("converter3").innerHTML;
-			ones = +ones - +BC;
-			zeros = +zeros - +BC;
-			click = +click + +BC;
-			localStorage.setItem("save_zeros", zeros);
-			localStorage.setItem("save_ones", ones);
+			var BC = document.getElementById("converter2").innerHTML;
+			ONES = +ONES - +BC;
+			ZEROS = +ZEROS - +BC;
+			BIN_COIN = +BIN_COIN + +BC;
+			localStorage.setItem("save_ZEROS", ZEROS);
+			localStorage.setItem("save_ONES", ONES);
 			
-		}
-		
-		function del()
-		{
-			var x = document.getElementById("anime");
-			x.parentNode.removeChild(x);
 		}
 		
 		function show()
 		{
-		   document.getElementById("counter2").innerHTML=click.toFixed()+" Binnary Coins";
-		   document.getElementById("counter_zeros").innerHTML= "zeros<br><br> "+zeros;
-		   document.getElementById("counter_ones").innerHTML= "ones<br><br> "+ones;
-			if (zeros < ones)
+		   document.getElementsByClassName("counter")[1].innerHTML= Math.round(BIN_COIN)+" Binnary Coins";
+		   document.getElementsByClassName("counter")[3].innerHTML= "zeros:"+ZEROS;
+		   document.getElementsByClassName("counter")[4].innerHTML= "ones:"+ONES;
+		   document.getElementsByClassName("counter")[5].innerHTML= "cliks:"+CLICKING;
+			if (ZEROS < ONES)
 			{
-				document.getElementById("converter3").innerHTML = zeros;
+				document.getElementById("converter2").innerHTML =  ZEROS;
 			}
 			else
 			{
-				document.getElementById("converter3").innerHTML = ones;
+				document.getElementById("converter2").innerHTML =  ONES;
 			}
 		}
 		setInterval(show, 1);
 
 		function save()
 		{
-			localStorage.setItem("save_click", click);
-			localStorage.setItem("save_zeros", zeros);
-			localStorage.setItem("save_ones", ones);
-			
+			localStorage.setItem("save_BIN_COIN", BIN_COIN);
+			localStorage.setItem("save_ZEROS", ZEROS);
+			localStorage.setItem("save_ONES", ONES);
+			localStorage.setItem("save_CLICKING", CLICKING);
+
 			number0 = document.getElementById("number0").innerHTML;
 			localStorage.setItem("save_number0", number0);
-			
+
 			price0 = document.getElementById("price0").innerHTML;
 			localStorage.setItem("save_price0", price0);
 		}
@@ -115,6 +131,7 @@ window.onload = function () {
 		function opctions()
 		{
 			//alert("opctions")
+
 		}
 
 		function achievement()
@@ -122,16 +139,26 @@ window.onload = function () {
 			var input = document.getElementById("pressenter").value;
 			if(input == "dupa")
 			{
-				alert("o ty kurde")
+				console.log("o ty kurde")
 			}
 			else
-			alert("achievement")
+			console.log("achievement")
 		}
 
 		function stats()
 		{
-			alert("stats")
-			localStorage.clear();
+	        alert("Save file error");
+    		BIN_COIN = 0;
+    		alert("Save file error2");
+    		document.getElementById("number0").innerHTML = 0;
+    		alert("Save file error3");
+    		document.getElementById("price0").innerHTML = 10;
+    		ZEROS = 0;
+    		ONES = 0;
+    		CLICKING = 0;
+    		document.getElementsByClassName("counter")[3].innerHTML =0;
+    		document.getElementsByClassName("counter")[4].innerHTML =0;
+    		document.getElementsByClassName("counter")[5].innerHTML =0;
 		}
 
 		function buttonpress()
@@ -150,16 +177,16 @@ window.onload = function () {
 		{
 			var prc = document.getElementById('price'+id).innerHTML ;
 			var amount = document.getElementById('number'+id).innerHTML ;
-			if  (click <= 0 || click < prc)
+			if  (BIN_COIN <= 0 || BIN_COIN < prc)
 			{
-				click = click;
+				BIN_COIN = BIN_COIN;
 				amount = +amount + +0;
 				prc = prc;
 			}
 			else
 			{
 				
-				click = click - prc;
+				BIN_COIN = BIN_COIN - prc;
 				prc= +prc + Math.round(0.2*prc);
 				amount++;
 			}
@@ -175,9 +202,9 @@ window.onload = function () {
 			var amo_2 = document.getElementById("number2").innerHTML ;
 			var amo_3 = document.getElementById("number3").innerHTML ;
 
-			click = +click + +((amo_0*0.1)+(amo_1*0.2)+(amo_2*0.4)+(amo_3*1.2));
+			BIN_COIN = +BIN_COIN + +((amo_0*0.1)+(amo_1*0.2)+(amo_2*0.4)+(amo_3*1.2));
 		}
-		setInterval(work, 1);
+		setInterval(work, 1000);
 		
 		function upgrade()
 		{

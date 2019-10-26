@@ -1,6 +1,6 @@
 body
 {
-	/* This pattern is downloaded from www.subtlepatterns.com 
+	/* This pattern is downloaded from www.subtlepatterns.com
  If you need more, that's where to get'em. */
 	background-color: black;
 	margin: 0px;
@@ -124,11 +124,10 @@ img
 /* --------------------------------------------------------------------------------------------------------------------------- */
 #counter1
 {
-	background-color:blue;
+	background-color:red;
 	padding: 5px;
 	margin-left:auto;
 	margin-right:auto;
-	border-radius: 10px 0px 0px 10px;
 
 }
 #counter2
@@ -136,62 +135,25 @@ img
 	background-color:red;
 	padding: 5px;
 	background: rgba(0, 0, 0, 0.2);
-	border-radius: 0px 10px 10px 0px;
 }
-#coin
-{
-	position: absolute;
-	left: 100px;
-	top: -25px;
-	font-family: bitfont1;
-	font-size: 20px;
-	width: 225px;
-	padding: 3px;
-	background-color: black;
-	border-radius: 10px 10px 0px 0px;
-}
-#counter_right
-{
-	position: absolute;
-	display: flex;
-	align-items: stretch;
-	right: 20px;
-	top: 0px;
-	height: auto;
-	width: auto;
-}
-.counter_binary
-{
-	font-size: 10px;
-	margin: 0px 10px 10px 10px;
-	padding: 10px;
-	font-family: bitfont2;
-	text-align: center;
-	background-color:black;
-	border-radius: 0px 0px 20px 20px;
-}
-
 .counter
 {
-	float:left;
+    display: inline;
 	max-height: auto;
-	padding: 10px;
-	background-image: url("subtlepatterns/dotted2.png");
+
 	text-align: center;
 	font-family: bitfont1;
-	font-size: 40px;
+	font-size: 20px;
 }
 #counter_all
 {
-	border: 1px solid white;
 	position: absolute;
-	left: 20px;
-	top: 30px;
+	width: 100%;
 }
 /* --------------------------------------------------------------------------------------------------------------------------- */
 #click_catcher
 {
-	position: relative;
+	position: absolute;
 	top: 330px;
     left: 214px;
 	height: 90px;
@@ -346,10 +308,13 @@ img
 
 #converter
 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
 	background-color: green;
 	text-align: center;
-	width: 300px;
-	height: 100px;
+	width: 250px;
+	height: 400px;
 	position: relative;
 	top: 100px;
 	
@@ -358,34 +323,22 @@ img
 }
 #converter:hover
 {
-
-}
-#converter2
-{
-	background-color: lime;
-	padding: 10px;
+    height: 100px;
 }
 .converter
 {
-	float: left;
 	margin-left: 4px;
 	margin-right: 4px;
 	padding: 5px;
 	font-size: 10px;
-	margin-top: 20px;
-	margin-bottom: 20px;	
 
-	transition-property: display;
+	transition: display;
 	transition-duration: 500ms;
-}
-.converte:hover
-{
-	display: none;
 }
 .buttons
 {
 	font-family: bitfont2;
-	padding: 8px 5px 8px 5px;
+	padding: 15px 5px 15px 5px;
 	margin: 15px 10px 20px 0px;
 	background-color: #444444;
 	color: #20e31a;
@@ -398,15 +351,29 @@ img
 	box-shadow: 0px 2px #111111;
 	transform: translateY(3px);
 }
-#anime
+.anime
 {
 	font-size: 30px;
 	letter-spacing: 10px;
 	pointer-events: none;
-	position: absolute; 
+	position: absolute;
 	z-index: 80;
 	
 	animation-name: click;
 	animation-duration: 750ms;
 	animation-timing-function: ease;
+}
+.menu{
+    display: block;
+	width: inherit;
+	height: 50px;
+	background-color: #3a3c3a;
+	border-bottom: inset #20e31a;
+	transition: height 200ms;
+	overflow-y: hidden;
+	text-align: center;
+	font-size: 20px;
+}
+.menu:hover{
+    height: 250px;
 }
